@@ -1,0 +1,23 @@
+GET http://localhost:4000/movie
+
+###
+GET http://localhost:4000/admin
+
+###
+
+POST http://localhost:3000/admin
+Content-Type: application/json
+
+{
+    "name": "Omar",
+    "password": "password"
+}
+###
+
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "name": "Omar",
+    "password": "password"
+}
