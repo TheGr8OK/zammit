@@ -81,7 +81,7 @@ const deleteAdmin = (req, res) => {
 const loginAdmin= async (req, res) => {
         Admin.findOne({Name: req.body.Name}, async (err, admin) => {
             if(!admin){
-                res.status(404).send("Admin not found");
+                res.send("Admin not found");
             }
             else{
                 try {
@@ -93,7 +93,7 @@ const loginAdmin= async (req, res) => {
                         res.send({accessToken : accessToken})
                     }
                     else {
-                        res.send("Failed")
+                        res.send("Password is incorrect")
                     }
                 }
                 catch(e) {
@@ -106,10 +106,7 @@ const loginAdmin= async (req, res) => {
 
 
 const testToken = (req, res)=>{
-    Admin.find(function (err, admins) {
-        console.log(admins)
-        res.json(admins.filter(admin => admin.Name === req.admin.Name)) 
-    });
+    res.send(req.user.Role)
     // console.log(admins)
 }
 

@@ -9,5 +9,6 @@ router.post("/movie", authenticateToken, authenticateRole(Roles.MODERATOR), movi
 router.get("/movie/:Title", movieController.getMovie);
 router.put("/movie/:Title", authenticateToken, authenticateRole(Roles.MODERATOR), movieController.updateMovie);
 router.delete("/movie/:Title", authenticateToken, authenticateRole(Roles.MODERATOR), movieController.deleteMovie);
+router.post("/movieSearch", movieController.searchMovies)
 
 module.exports = router;

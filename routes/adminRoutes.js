@@ -13,6 +13,6 @@ router.delete("/admin/:Name", authenticateToken, authenticateRole(Roles.ADMIN), 
 router.post("/admin/login", adminController.loginAdmin);
 router.post("/admin/createModerator", authenticateToken, authenticateRole(Roles.ADMIN), moderatorController.createModerator)
 router.post("/admin/getModerator", authenticateToken, authenticateRole(Roles.ADMIN), moderatorController.getModerator);
-
+router.get("/testToken", authenticateToken, authenticateRole(Roles.MODERATOR), adminController.testToken)
 
 module.exports = router;

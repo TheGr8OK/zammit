@@ -93,7 +93,7 @@ const deleteModerator = (req, res) => {
 const loginModerator= async (req, res) => {
     Moderator.findOne({Name: req.body.Name}, async (err, moderator) => {
         if(!moderator){
-            res.status(404).send("Moderator not found");
+            res.send("Moderator not found");
         }
         else{
             try {
@@ -105,7 +105,7 @@ const loginModerator= async (req, res) => {
                     res.send({accessToken : accessToken})
                 }
                 else {
-                    res.send("Failed")
+                    res.send("Password is incorrect")
                 }
             }
             catch(e) {

@@ -63,10 +63,33 @@ const deleteMovie = (req, res) => {
 	});
 };
 
+//search movies 
+const searchMovies =(req, res) =>{
+	Movie.find((err, movies) => {
+		if(err){
+			res.status(500).send(err)
+		}
+		
+		const searchedMovies = movies.filter((item) => {
+            return item.Title.toLowerCase().includes(req.body.searchBody)
+        })
+		if(req.body.searchBody == ""){
+			currentPage = movies.slice(req.body.page * 5, req.body.page * 5 + 5)
+			res.send({"currentPage": currentPage, "pages": Math.ceil(movies.length/5), "movies": searchedMovies})
+			return;
+		}
+		console.log(searchedMovies)
+		currentPage = searchedMovies.slice(req.body.page * 5, req.body.page * 5 + 5);
+		res.send({"currentPage": currentPage, "pages": Math.ceil(searchedMovies.length/5), "movies": searchedMovies})
+		return;
+	})
+}
+
 module.exports = {
 	getMovies,
 	getMovie,
 	createMovie,
 	updateMovie,
 	deleteMovie,
+	searchMovies
 };
