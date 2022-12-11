@@ -76,6 +76,7 @@ const ModeratorsList = () => {
                         <FormControl>
                             <InputLabel htmlFor="component-outlined">Password</InputLabel>
                             <OutlinedInput
+                                type='password'
                                 id="component-outlined"
                                 value={newModeratorData.Password}
                                 onChange={handleChangePassword}

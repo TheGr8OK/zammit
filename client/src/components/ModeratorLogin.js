@@ -78,6 +78,7 @@ function ModeratorLogin() {
                             <FormControl>
                                 <InputLabel htmlFor="component-outlined">Password</InputLabel>
                                 <OutlinedInput
+                                    type='password'
                                     id="component-outlined"
                                     value={password}
                                     onChange={handleChangePass}
